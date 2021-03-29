@@ -1,6 +1,5 @@
 #/bin/bash
 
-cd $HOME/res
 mkdir stg_build
 cd stg_build
 
