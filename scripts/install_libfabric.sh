@@ -32,7 +32,7 @@ cd $repo
 
 ##clean previous build
 rm -rf $target
-if [ $build_fbatests -eq 1 ]; then
+if [ $build_fabtests -eq 1 ]; then
         (cd fabtests; make distclean)
 fi
 make distclean
@@ -66,5 +66,5 @@ if [ $debug -eq 1 ]; then
         config_cmd+=" --enable-debug"
 fi
 ./autogen.sh
-./configure $fabtests_args
+$config_cmd
 make -j install
