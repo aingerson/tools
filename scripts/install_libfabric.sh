@@ -3,16 +3,16 @@
 ##SET YOUR VARS HERE##
 target=$HOME/install            #where to install to (make sure this is a dedicated directory because it will get force removed!)
 repo=$HOME/workspace/libfabric  #where the source code is
-debug=1                         #set to 1 for debug build
+debug=1                        #set to 1 for debug build
 build_fabtests=1                #set to 1 to build fabtests
 
 declare -a libfabric_args=(
                            "--disable-usnic"
-                           "--disable-efa"
                            "--disable-opx"
                            "--disable-psm"
                            "--disable-psm2"
                            "--disable-psm3"
+			   "--enable-ze-dl"
                            )
 
 declare -a fabtests_args=(
@@ -22,10 +22,12 @@ declare -a fabtests_args=(
 
 
 
-
+#removed -O0 CFLAG
 
 if [ $debug -eq 1 ]; then
-        export CFLAGS="-g -O0"
+	export CFLAGS="-g"
+else
+	unset CFLAGS
 fi
 
 cd $repo
