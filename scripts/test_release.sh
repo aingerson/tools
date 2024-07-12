@@ -26,22 +26,18 @@ tar -xf libfabric-${test_version}.tar.bz2
 tar -xf fabtests-${test_version}.tar.bz2
 
 cd libfabric-${test_version}
-./autogen.sh
 ./configure --prefix=$tmp_dir/${test_version}_libfabric_install
 make -j install
 cd ../fabtests-${test_version}
-./autogen.sh
 ./configure --prefix=$tmp_dir/${test_version}_fabtests_install --with-libfabric=$tmp_dir/${test_version}_libfabric_install
 make -j install
 
 cd $tmp_dir
 
 cd libfabric-${last_version}
-./autogen.sh
 ./configure --prefix=$tmp_dir/${last_version}_libfabric_install
 make -j install
 cd ../fabtests-${last_version}
-./autogen.sh
 ./configure --prefix=$tmp_dir/${last_version}_fabtests_install --with-libfabric=$tmp_dir/${last_version}_libfabric_install
 make -j install
 
