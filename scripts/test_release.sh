@@ -48,7 +48,7 @@ cd $tmp_dir
         export PATH=$tmp_dir/${test_version}_libfabric_install/bin:$tmp_dir/${test_version}_fabtests_install/bin:$PATH
 
         cd $tmp_dir/${test_version}_fabtests_install/share/fabtests
-        runfabtests.sh $prov localhost localhost
+        runfabtests.sh -p $tmp_dir/${test_version}_fabtests_install/bin $prov localhost localhost
 )
 
 rm -rf $tmp_dir/${last_version}_libfabric_install
@@ -58,7 +58,7 @@ rm -rf $tmp_dir/${last_version}_libfabric_install
         export PATH=$tmp_dir/${test_version}_libfabric_install/bin:$tmp_dir/${last_version}_fabtests_install/bin:$PATH
 
         cd $tmp_dir/${last_version}_fabtests_install/share/fabtests
-        runfabtests.sh $prov localhost localhost
+        runfabtests.sh -p $tmp_dir/${last_version}_fabtests_install/bin $prov localhost localhost
 )
 cd $tmp_dir/..
 rm -rf $tmp_dir
